@@ -10,10 +10,15 @@ int linearSearch(const std::vector<int>& data, int key, int& comparisons);
 int binarySearch(const std::vector<int>& data, int key, int& comparisons);
 
 int main() {
-    int n = 1000; // Example size
+    int n = 100; // Example size
     int key;
     std::vector<int> data;
     generateData(data, n);
+
+    for (int i = 0; i < n; i++) {
+        std::cout << data[i] << " ";
+    }
+    std::cout << std::endl << "key : " << key << std::endl;
 
     // Example for Linear Search
     int comparisons = 0;
@@ -31,13 +36,12 @@ int main() {
 }
 
 void generateData(std::vector<int>& data, int n) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(1, 1000000);
+    std::srand(std::time(NULL));
 
     data.clear();
     for (int i = 0; i < n; ++i) {
-        data.push_back(dis(gen));
+        int random_number = rand() % n;
+        data.push_back(random_number);
     }
 }
 
